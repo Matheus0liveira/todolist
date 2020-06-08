@@ -21,6 +21,13 @@ const TodoList = () => {
   }
 
 
+  function enterKey(event) {
+    if (event.keyCode === 13) {
+      handleAddNameToList()
+    }
+  }
+
+
 
   // ? Adicionando valor a listTassk
   function handleAddNameToList(event) {
@@ -41,14 +48,21 @@ const TodoList = () => {
     setListTasks(newListTasks)
   }
 
-  function handleCheckedListTask(index) {
-    const value = document.getElementsByClassName('value')
-    console.log(value)
-  }
-  function enterKey(event) {
-    if (event.keyCode === 13) {
-      handleAddNameToList()
+  // function handleCheckedListTask(event) {
+  //   check(event)
+  // }
+
+  function check(event) {
+    const element = event.target
+    if (element.classList.contains('checked')) {
+      return event.target.classList.remove('checked')
+
+
+    } else {
+      return event.target.classList.add('checked')
+
     }
+
   }
 
   return (
@@ -67,9 +81,10 @@ const TodoList = () => {
               {listTask.map((task, index) => (
 
                 <div className='list-single' key={index}>
-                  <p >{task}</p>
+                  {/* <RiCheckboxBlankLine className='icon-check' onClick={() => handleCheckedListTask} /> */}
+                  <p onClick={check}  >{task}</p>
                   <div className="icons">
-                    <RiCheckboxBlankLine className='icon-check' onClick={() => handleCheckedListTask(index)} />
+
                     <BsTrash className='icon-trash' onClick={() => handleDeleteFromList(index)} />
                   </div>
                 </div>
