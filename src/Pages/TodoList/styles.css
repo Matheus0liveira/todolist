@@ -1,0 +1,114 @@
+.bg-todo-list {
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.todo {
+  padding: 90px 0;
+}
+
+.todo-list {
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #212121;
+}
+
+.list-single {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+}
+
+.input-icon {
+  display: flex;
+}
+
+
+
+.todo-list .icon-send {
+  font-size: 50px;
+  padding: 0 10px;
+  border: 1px solid #212121;
+  color: #212121;
+  transition: color .2s;
+  cursor: pointer;
+}
+
+.todo-list .icon-send:hover {
+  color: #21212179;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  border-left: 1px solid #ccc;
+  height: 100%;
+}
+
+.todo-list .icon-trash {
+  font-size: 15px;
+  margin: 0 5px;
+  color: #212121;
+  transition: opacity .2s;
+  cursor: pointer;
+}
+
+.todo-list .icon-trash:hover {
+  opacity: 0.5;
+}
+
+
+.list-single .icon-check {
+  font-size: 15px;
+  color: #212121;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: opacity .2s;
+}
+
+
+
+.list-single .icon-check:hover {
+  opacity: 0.5;
+}
+
+.todo-list input {
+  border: 1px solid #212121;
+  font-weight: bold;
+  padding: 10px;
+  width: 100%;
+  outline: 0;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.list ul {
+  margin: 50px 0;
+}
+
+.list ul p {
+  color: #212121;
+}
+
+.list-single .set-value {
+  border: 0;
+}
+
+.todo-list .count-tasks {
+  color: #ccc;
+  font-size: 14px;
+  margin: 10px 5px;
+  font-weight: lighter;
+  font-style: italic;
+}
