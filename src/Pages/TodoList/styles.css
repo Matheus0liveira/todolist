@@ -20,8 +20,17 @@
   align-items: center;
   justify-content: space-between;
   margin: 20px 0;
-  /* border-bottom: 1px solid #ccc; */
+  padding: 0 10px;
   width: 100%;
+  transition: .3s;
+}
+
+.list-single.dragggin {
+  opacity: 0.2;
+}
+
+.list-single:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .input-icon {
@@ -47,7 +56,6 @@
   display: flex;
   flex-direction: column;
   margin-left: 20px;
-  /* ! border-left: 1px solid #ccc; */
   height: 100%;
   transition: 1s;
 }
@@ -73,7 +81,10 @@
   transition: opacity 0.2s;
 }
 
+
+
 .list-single:hover .icons {
+
   opacity: 1;
 }
 
@@ -115,13 +126,21 @@
   font-weight: lighter;
   font-style: italic;
 }
+
 .list-single p {
   cursor: default;
   text-transform: capitalize;
   transition: 1s;
   width: 100%;
 }
+
 .checked {
   text-decoration: line-through;
-  opacity: 0.5;
+  opacity: 0.2;
+}
+
+@media screen and (max-width: 550px) {
+  .icons {
+    opacity: 1;
+  }
 }

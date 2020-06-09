@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { MdPlaylistAdd } from 'react-icons/md'
 import { BsTrash } from 'react-icons/bs'
-import { RiCheckboxBlankLine } from 'react-icons/ri'
+// import { RiCheckboxBlankLine } from 'react-icons/ri'
 import FlipMove from 'react-flip-move'
 
 import './styles.css'
@@ -10,6 +10,13 @@ const TodoList = () => {
 
   const [changeName, setChangeName] = useState('')
   const [listTask, setListTasks] = useState([])
+
+  useEffect(() => {
+    const counter = listTask.length
+
+    document.title = `(${counter}) Todo-List`
+  }, [listTask.length])
+
 
 
   // ? Pegando o valor do input
@@ -54,6 +61,9 @@ const TodoList = () => {
 
   function check(event) {
     const element = event.target
+
+
+
     if (element.classList.contains('checked')) {
       return event.target.classList.remove('checked')
 
@@ -74,15 +84,16 @@ const TodoList = () => {
           <MdPlaylistAdd className='icon-send' onClick={handleAddNameToList} />
         </div>
         <p className='count-tasks'>{`Tasks: ${listTask.length} `}</p>
-        <div className="list">
+        <div className="list"  >
           <ul >
             <FlipMove
-              staggerDelayBy={150} duration={300} enterAnimation="accordionVertical" leaveAnimation="accordionVertical">
+              duration={300} easing='ease-in-out'>
+
               {listTask.map((task, index) => (
 
-                <div className='list-single' key={index}>
-                  {/* <RiCheckboxBlankLine className='icon-check' onClick={() => handleCheckedListTask} /> */}
-                  <p onClick={check}  >{task}</p>
+                <div className='list-single' draggable={true} key={index}>
+                  {/*  <RiCheckboxBlankLine className='icon-check' onClick={() => handleCheckedListTask} /> */}
+                  <p onClick={check} >{task}</p>
                   <div className="icons">
 
                     <BsTrash className='icon-trash' onClick={() => handleDeleteFromList(index)} />
