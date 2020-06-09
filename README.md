@@ -16,6 +16,9 @@
     # Instalar todas as dependências
     npm install
     
+    # Executar
+    npm start
+    
  ```
  
  ### 🚀 Hospedado em: 
