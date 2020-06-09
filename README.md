@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-=======
+
+
 # <div align='center'> 📁 Todo-List </div>
 
  <div align='center'>
@@ -22,4 +22,4 @@
 >  https://matheus-todlist.netlify.app/
  
   
->>>>>>> cb76a334fe5ee1fd8384fd4983c7778c67e153e1
+
