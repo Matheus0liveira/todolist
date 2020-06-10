@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Scrollbars } from 'react-custom-scrollbars';
 import { MdPlaylistAdd } from 'react-icons/md'
 import { BsTrash } from 'react-icons/bs'
 // import { RiCheckboxBlankLine } from 'react-icons/ri'
@@ -75,37 +76,77 @@ const TodoList = () => {
 
   }
 
+  function handleUpdateInput(event) {
+
+    const newListTasks = listTask.slice()
+
+    console.log(event.target.value)
+
+
+
+  }
+
   return (
     <div className='todo'>
 
       <div className="todo-list bg-todo-list">
         <div className="input-icon">
-          <input className='input-add' type="text" placeholder='Digite sua tarefa' onKeyDown={enterKey} onChange={handleTakeChangeName} />
-          <MdPlaylistAdd className='icon-send' onClick={handleAddNameToList} />
+          <input className='input-add'
+            type="text"
+            placeholder='Digite sua tarefa'
+            onKeyDown={enterKey}
+            onChange={handleTakeChangeName}
+          />
+
+
+          <MdPlaylistAdd
+            className='icon-send'
+            onClick={handleAddNameToList}
+          />
         </div>
-        <p className='count-tasks'>{`Tasks: ${listTask.length} `}</p>
-        <div className="list"  >
-          <ul >
-            <FlipMove
-              duration={300} easing='ease-in-out'>
 
-              {listTask.map((task, index) => (
 
-                <div className='list-single' draggable={true} key={index}>
-                  {/*  <RiCheckboxBlankLine className='icon-check' onClick={() => handleCheckedListTask} /> */}
-                  <p onClick={check} >{task}</p>
-                  <div className="icons">
+        <p className='count-tasks'>
+          {`Tasks: ${listTask.length} `}
+        </p>
 
-                    <BsTrash className='icon-trash' onClick={() => handleDeleteFromList(index)} />
+
+        <div className="list">
+
+
+              <Scrollbars style={{  height: 400 }}>
+            <ul >
+
+              <FlipMove
+                duration={500}
+                easing='ease-in-out'
+              >
+
+                {listTask.map((task, index) => (
+
+                  <div
+                    className='list-single'
+                    key={index}
+                  >
+
+
+                    <p onClick={check}>{task}</p>
+
+
+                    <div className="icons">
+
+                      <BsTrash className='icon-trash' onClick={() => handleDeleteFromList(index)} />
+                    </div>
                   </div>
-                </div>
-              ))}
-            </FlipMove>
+                ))}
 
+              </FlipMove>
 
+            </ul>
+          </Scrollbars>
 
-          </ul>
         </div>
+
 
       </div>
 

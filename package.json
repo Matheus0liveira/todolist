@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.13.1",
     "react-beautiful-dnd": "^13.0.0",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.13.1",
     "react-flip-move": "^3.0.4",
     "react-icons": "^3.10.0",
