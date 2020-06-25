@@ -76,15 +76,6 @@ const TodoList = () => {
 
   }
 
-  function handleUpdateInput(event) {
-
-    const newListTasks = listTask.slice()
-
-    console.log(event.target.value)
-
-
-
-  }
 
   return (
     <div className='todo'>
@@ -114,7 +105,7 @@ const TodoList = () => {
         <div className="list">
 
 
-              <Scrollbars style={{  height: 400 }}>
+          <Scrollbars style={{ height: 400 }}>
             <ul >
 
               <FlipMove
@@ -128,14 +119,18 @@ const TodoList = () => {
                     className='list-single'
                     key={index}
                   >
+                    <div className="icons">
+                      <input type="checkbox" name="check" id="check" />
 
-
-                    <p onClick={check}>{task}</p>
-
+                    </div>
+                    <label htmlFor="check">
+                      <p onClick={check}
+                      >{task}</p>
+                    </label>
 
                     <div className="icons">
-
                       <BsTrash className='icon-trash' onClick={() => handleDeleteFromList(index)} />
+
                     </div>
                   </div>
                 ))}
