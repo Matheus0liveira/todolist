@@ -9,16 +9,21 @@ import './styles.css'
 
 const TodoList = () => {
 
+  const item = localStorage.getItem("listTask")
+
+  function init() {
+    return (item != null && item !== "") ? JSON.parse(item) : []
+
+  }
+
   const [changeName, setChangeName] = useState('')
-  const [listTask, setListTasks] = useState([])
+  const [listTask, setListTasks] = useState(init())
 
   useEffect(() => {
     const counter = listTask.length
 
     document.title = `(${counter}) Todo-List`
   }, [listTask.length])
-
-
 
   // ? Pegando o valor do input
   function handleTakeChangeName(event) {
@@ -28,31 +33,44 @@ const TodoList = () => {
 
   }
 
-
   function enterKey(event) {
     if (event.keyCode === 13) {
       handleAddNameToList()
     }
   }
 
-
+  function updateStorage(listTask) {
+    localStorage.setItem("listTask", JSON.stringify(listTask))
+  }
 
   // ? Adicionando valor a listTassk
   function handleAddNameToList(event) {
     const newListTasks = listTask.slice()
-    newListTasks.push(changeName)
-
-
+    newListTasks.push({
+      name: changeName,
+      checked: ""
+    })
+    let exist = false;
     if (changeName === '') return alert('Name is Void')
-    if (listTask.includes(changeName)) return alert('Task exist')
+    listTask.forEach(element => {
+      if (element.name.includes(changeName)) {
+        exist = true
+        return alert('Task exist')
+      }
+    });
 
-    setListTasks(newListTasks)
+    if (!exist) {
+      updateStorage(newListTasks)
+      setListTasks(newListTasks)
+    }
+
   }
 
   // ? Deletando um item da listTask
   function handleDeleteFromList(index) {
     const newListTasks = listTask.slice()
     newListTasks.splice(index, 1)
+    updateStorage(newListTasks)
     setListTasks(newListTasks)
   }
 
@@ -60,22 +78,36 @@ const TodoList = () => {
   //   check(event)
   // }
 
-  function check(event) {
-    const element = event.target
+  function check(index) {
 
+    const element = document.getElementById(index)
 
-
+    let updateList = listTask
     if (element.classList.contains('checked')) {
-      return event.target.classList.remove('checked')
+      updateList[index].checked = "";
+      setListTasks(updateList)
 
+      updateStorage(updateList)
+      return element.classList.remove('checked')
 
     } else {
-      return event.target.classList.add('checked')
-
+      updateList[index].checked = "checked";
+      setListTasks(updateList)
+      updateStorage(updateList)
+      return element.classList.add('checked')
     }
 
   }
 
+  function handleUpdateInput(ind, event) {
+
+    const newListTasks = listTask.slice()
+
+    console.log(event.target.value)
+
+
+
+  }
 
   return (
     <div className='todo'>
@@ -119,18 +151,14 @@ const TodoList = () => {
                     className='list-single'
                     key={index}
                   >
-                    <div className="icons">
-                      <input type="checkbox" name="check" id="check" />
 
-                    </div>
-                    <label htmlFor="check">
-                      <p onClick={check}
-                      >{task}</p>
-                    </label>
+
+                    <p id={index} className={task.checked} onClick={() => check(index)}>{task.name}</p>
+
 
                     <div className="icons">
+
                       <BsTrash className='icon-trash' onClick={() => handleDeleteFromList(index)} />
-
                     </div>
                   </div>
                 ))}
