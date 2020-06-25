@@ -14,10 +14,10 @@
     git clone https://github.com/Matheus0liveira/todolist.git
     
     # Instalar todas as dependências
-    npm install
+    yarn install
     
     # Executar
-    npm start
+    yarn start
     
  ```
  
