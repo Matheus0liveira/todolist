@@ -99,15 +99,15 @@ const TodoList = () => {
 
   }
 
-  function handleUpdateInput(ind, event) {
+  // function handleUpdateInput(ind, event) {
 
-    const newListTasks = listTask.slice()
+  //   const newListTasks = listTask.slice()
 
-    console.log(event.target.value)
+  //   console.log(event.target.value)
 
 
 
-  }
+  // }
 
   return (
     <div className='todo'>
